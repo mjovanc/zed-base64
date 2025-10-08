@@ -1,0 +1,18 @@
+[package]
+name = "zed-base64"
+version = "0.1.0"
+edition = "2024"
+authors = ["Marcus Cvjeticanin <mjovanc@icloud.com>"]
+description = "A Zed extension for base64 multi-format encode or decode."
+repository = "https://github.com/mjovanc/zed-base64"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+zed_extension_api = "0.1.0"
+base64 = "0.22.1"
+url = "2.5.2"
+hex = "0.4.3"
+flate2 = "1.0.30"
