@@ -1,8 +1,8 @@
 use base64::{Engine as _, engine::general_purpose::STANDARD as BASE64_STANDARD};
 use flate2::{Compression, read::GzDecoder, write::GzEncoder};
 use hex::{decode as hex_decode, encode as hex_encode};
+use percent_encoding::{CONTROLS, percent_decode_str, utf8_percent_encode};
 use std::io::{Read, Write};
-use url::percent_encoding::{AsciiSet, CONTROLS, percent_decode_str, utf8_percent_encode};
 use zed_extension_api::{
     self as zed, Result, SlashCommand, SlashCommandArgumentCompletion, SlashCommandOutput,
     SlashCommandOutputSection,
@@ -34,11 +34,15 @@ impl zed::Extension for Base64MultiExtension {
             cmd => return Err(format!("Unknown command: {}", cmd)),
         };
 
-        let text = format!("Input: {}\n\nResult: {}", input, result);
+        let input_prefix = format!("Input: {}\n\n", input);
+        let result_prefix = "Result: ";
+        let text = format!("{}{}{}", input_prefix, result_prefix, result);
+        let range_start = input_prefix.len() + result_prefix.len();
+
         Ok(SlashCommandOutput {
             text: text.clone(),
             sections: vec![SlashCommandOutputSection {
-                range: (input.len() + 2 + 8..text.len()).into(), // Range over the "Result:" part
+                range: (range_start..text.len()).into(),
                 label: format!("{} ({} {})", result, format, command.name),
             }],
         })

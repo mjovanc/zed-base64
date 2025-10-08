@@ -611,6 +611,7 @@ dependencies = [
  "base64",
  "flate2",
  "hex",
+ "percent-encoding",
  "url",
  "zed_extension_api",
 ]

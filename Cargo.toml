@@ -3,7 +3,7 @@ name = "zed-base64"
 version = "0.1.0"
 edition = "2024"
 authors = ["Marcus Cvjeticanin <mjovanc@icloud.com>"]
-description = "A Zed extension for base64 multi-format encode or decode."
+description = "A Zed extension for base64 multi-format encode and decode."
 repository = "https://github.com/mjovanc/zed-base64"
 license = "MIT"
 
@@ -16,3 +16,4 @@ base64 = "0.22.1"
 url = "2.5.2"
 hex = "0.4.3"
 flate2 = "1.0.30"
+percent-encoding = "2.3.1"

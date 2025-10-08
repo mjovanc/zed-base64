@@ -3,7 +3,7 @@ name = "Base64"
 version = "0.1.0"
 schema_version = 1
 authors = ["Marcus Cvjeticanin <mjovanc@icloud.com>"]
-description = "Base64 multi-format encode or decode for Zed"
+description = "Base64 multi-format encode and decode for Zed"
 repository = "https://github.com/mjovanc/zed-base64"
 
 [slash_commands.encode]
